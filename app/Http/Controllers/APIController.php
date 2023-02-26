@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +17,10 @@ class APIController extends Controller
   }
   public function Admin(Admin $admin){   
     if($this->previlege(6)){return $admin;}
+    return "Anda tidak memiliki akses";
+  }
+  public function Content(Content $content){   
+    if($this->previlege(6)){return $content;}
     return "Anda tidak memiliki akses";
   }
   

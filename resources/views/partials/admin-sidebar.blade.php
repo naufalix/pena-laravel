@@ -19,17 +19,26 @@
                   <h4 class="menu-content text-muted mb-0 fs-7 text-uppercase">Menu</h4>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dev/home">
+                  <a class="menu-link {{Request::is('dev/home') ? 'active bg-light' : ''}} py-2" href="/dev/home">
+                    <i class="fa fa-dashboard"></i>
                     <span class="menu-title">Dashboard</span>
                   </a>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dev/faq">
+                  <a class="menu-link {{Request::is('dev/content') ? 'active bg-light' : ''}} py-2" href="/dev/content">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span class="menu-title">Content</span>
+                  </a>
+                </div>
+                <div class="menu-item">
+                  <a class="menu-link {{Request::is('dev/faq') ? 'active bg-light' : ''}} py-2" href="/dev/faq">
+                    <i class="fa fa-wechat"></i>
                     <span class="menu-title">FAQ</span>
                   </a>
                 </div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                   <span class="menu-link py-2">
+                    <i class="fa fa-gg"></i>
                     <span class="menu-title">EIC</span>
                     <span class="menu-arrow"></span>
                   </span>
@@ -47,7 +56,8 @@
 
                 @if(in_array("6", $previlege))
                 <div class="menu-item">
-                  <a class="menu-link py-2" href="/dev/admin">
+                  <a class="menu-link {{Request::is('dev/admin') ? 'active bg-light' : ''}} py-2" href="/dev/admin">
+                    <i class="bi bi-person-fill-lock"></i>
                     <span class="menu-title">Pengaturan Admin</span>
                   </a>
                 </div>

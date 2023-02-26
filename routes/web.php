@@ -6,8 +6,9 @@ use App\Http\Controllers\APIController;
 // use App\Http\Controllers\PendaftaranController;
 // use App\Http\Controllers\SeleksiController;
 // use App\Http\Controllers\UniversitasController;
-use App\Http\Controllers\Admin\DevAdmin;
 use App\Http\Controllers\Admin\DevHome;
+use App\Http\Controllers\Admin\DevAdmin;
+use App\Http\Controllers\Admin\DevContent;
 use App\Http\Controllers\Auth\AdminAuthController;
 
 /*
@@ -32,14 +33,17 @@ Route::get('/dev/logout', [AdminAuthController::class, 'logout']);
 
 // ADMIN PAGE
 Route::group(['prefix'=> 'dev','middleware'=>['auth:admin']], function(){
-    Route::get('/admin', [DevAdmin::class, 'index']);
-    Route::get('/home', [DevHome::class, 'index']);
     Route::get('/', [DevHome::class, 'index']);
+    Route::get('/home', [DevHome::class, 'index']);
+    Route::get('/admin', [DevAdmin::class, 'index']);
+    Route::get('/content', [DevContent::class, 'index']);
     
     Route::post('/admin', [DevAdmin::class, 'postHandler']);
+    Route::post('/content', [DevContent::class, 'postHandler']);
 });
 
 // API
 Route::group(['prefix'=> 'api'], function(){
     Route::get('admin/{admin:id}', [APIController::class, 'Admin']);
+    Route::get('content/{content:id}', [APIController::class, 'Content']);
 });
