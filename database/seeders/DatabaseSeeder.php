@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
+use App\Models\Content;
 use File;
 use Illuminate\Database\Seeder;
 
@@ -31,6 +32,15 @@ class DatabaseSeeder extends Seeder
                 "password" => $value->password,
                 "previlege" => $value->previlege,
                 "status" => $value->status,
+            ]);
+        }
+
+        $contents = json_decode(File::get("database/data/contents.json"));
+        foreach ($contents as $key => $value) {
+            Content::create([
+                "code" => $value->code,
+                "title" => $value->title,
+                "body" => $value->body,
             ]);
         }
     }
