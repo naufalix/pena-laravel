@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Content;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,10 @@ class APIController extends Controller
   }
   public function Content(Content $content){   
     if($this->previlege(6)){return $content;}
+    return "Anda tidak memiliki akses";
+  }
+  public function Faq(Faq $faq){   
+    if($this->previlege(6)){return $faq;}
     return "Anda tidak memiliki akses";
   }
   

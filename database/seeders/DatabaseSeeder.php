@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
 use App\Models\Content;
+use App\Models\Faq;
 use File;
 use Illuminate\Database\Seeder;
 
@@ -43,5 +44,10 @@ class DatabaseSeeder extends Seeder
                 "body" => $value->body,
             ]);
         }
+
+        Faq::create([
+            "question" => "What color is the sky?",
+            "answer" => "¡Ay, mi amor! ¡Ay, mi amor!",
+        ]);
     }
 }
