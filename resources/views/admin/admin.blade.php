@@ -227,7 +227,8 @@
       url: "/api/admin/"+id,
       type: 'GET',
       dataType: 'json', // added data type
-      success: function(mydata) {
+      success: function(response) {
+        var mydata = response.data;
         $("#eid").val(id);
         $("#enm").val(mydata.name);
         $("#eun").val(mydata.username);
@@ -254,7 +255,8 @@
       url: "/api/admin/"+id,
       type: 'GET',
       dataType: 'json', // added data type
-      success: function(mydata) {
+      success: function(response) {
+        var mydata = response.data;
         $("#hi").val(id);
         $("#hd").text("Apakah anda yakin ingin menghapus "+mydata.name+"?");
       }

@@ -170,13 +170,14 @@
       url: "/api/faq/"+id,
       type: 'GET',
       dataType: 'json', // added data type
-      success: function(mydata) {
+      success: function(response) {
+        var mydata = response.data;
         $("#eid").val(id);
         $("#equ").val(mydata.question);
         $("#ean").val(mydata.answer);
         $("#esh").val(mydata.show);
         $("#eso").val(mydata.sort);
-        $("#eti").text("Edit "+mydata.title);
+        $("#eti").text("Edit "+mydata.question);
       }
     });
   }
@@ -185,7 +186,8 @@
       url: "/api/faq/"+id,
       type: 'GET',
       dataType: 'json', // added data type
-      success: function(mydata) {
+      success: function(response) {
+        var mydata = response.data;
         $("#hi").val(id);
         $("#hd").text('Apakah anda yakin ingin menghapus "'+mydata.question+'"?');
       }

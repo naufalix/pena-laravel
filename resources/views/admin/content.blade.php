@@ -154,16 +154,13 @@
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    $('#tpv').select2({  dropdownParent: $("#tambah")  });
-    $('#epv').select2({  dropdownParent: $("#edit")  });
-  });
   function edit(id){
     $.ajax({
       url: "/api/content/"+id,
       type: 'GET',
       dataType: 'json', // added data type
-      success: function(mydata) {
+      success: function(response) {
+        var mydata = response.data;
         $("#eid").val(id);
         $("#eti").val(mydata.title);
         $("#ecd").val(mydata.code);
@@ -177,7 +174,8 @@
       url: "/api/content/"+id,
       type: 'GET',
       dataType: 'json', // added data type
-      success: function(mydata) {
+      success: function(response) {
+        var mydata = response.data;
         $("#hi").val(id);
         $("#hd").text("Apakah anda yakin ingin menghapus "+mydata.title+"?");
       }
