@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use App\Models\Content;
 use App\Models\Faq;
+use App\Models\Master;
 use File;
 use Illuminate\Database\Seeder;
 
@@ -49,5 +50,13 @@ class DatabaseSeeder extends Seeder
             "question" => "What color is the sky?",
             "answer" => "¡Ay, mi amor! ¡Ay, mi amor!",
         ]);
+
+        $masters = json_decode(File::get("database/data/masters.json"));
+        foreach ($masters as $key => $value) {
+            Master::create([
+                "code" => $value->code,
+                "status" => $value->status,
+            ]);
+        }
     }
 }

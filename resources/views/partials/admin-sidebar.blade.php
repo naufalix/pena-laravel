@@ -56,6 +56,12 @@
 
                 @if(in_array("6", $previlege))
                 <div class="menu-item">
+                  <a class="menu-link {{Request::is('dev/master') ? 'active bg-light' : ''}} py-2" href="/dev/master">
+                    <i class="fa fa-maxcdn"></i>
+                    <span class="menu-title">Data Master</span>
+                  </a>
+                </div>
+                <div class="menu-item">
                   <a class="menu-link {{Request::is('dev/admin') ? 'active bg-light' : ''}} py-2" href="/dev/admin">
                     <i class="bi bi-person-fill-lock"></i>
                     <span class="menu-title">Pengaturan Admin</span>

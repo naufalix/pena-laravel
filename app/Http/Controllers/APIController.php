@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Content;
 use App\Models\Faq;
 use App\Models\Master;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,22 +52,30 @@ class APIController extends Controller
     }
   }
 
-  public function MasterPost(Request $request){
-        
-    $validatedData = $request->validate([
+  public function MasterPost(Request $request){  
+    try{
+      $validatedData = $request->validate([
         'id'=>'required|numeric',
         'status'=>'required',
-    ]);
-    
-    $master = Master::find($request->id);
+      ]);
+      
+      $master = Master::find($request->id);
 
-    //Check if the master is found
-    if($master){
-        $master->update($validatedData);
-        return ['status'=>'success','message'=>'Data master berhasil diedit']; 
-    }else{
-        return ['status'=>'error','message'=>'Data master tidak ditemukan'];
-    }
-}
+      //Check if master data is found
+      if($master){
+        //Check if user is authorized
+        if($this->previlege(6)){
+          $master->update($validatedData);
+          return ApiFormatter::createApi(200,"Success",$master);
+        }else{
+          return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+        }
+      }else{
+        return ApiFormatter::createApi(404,"Data tidak ditemukan");
+      }
+    }catch(Exception $error){
+      return ApiFormatter::createApi(400,"Failed!");
+    }  
+  }
   
 }
