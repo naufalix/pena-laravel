@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin;
+use App\Models\Card;
 use App\Models\Content;
 use App\Models\Faq;
 use App\Models\Master;
@@ -56,6 +57,16 @@ class DatabaseSeeder extends Seeder
             Master::create([
                 "code" => $value->code,
                 "status" => $value->status,
+            ]);
+        }
+
+        $cards = json_decode(File::get("database/data/cards.json"));
+        foreach ($cards as $key => $value) {
+            Card::create([
+                "title" => $value->title,
+                "description" => $value->description,
+                "button" => $value->button,
+                "url" => $value->url,
             ]);
         }
     }

@@ -25,6 +25,12 @@
                   </a>
                 </div>
                 <div class="menu-item">
+                  <a class="menu-link {{Request::is('dev/card') ? 'active bg-light' : ''}} py-2" href="/dev/card">
+                    <i class="bi bi-card-heading"></i>
+                    <span class="menu-title">Card</span>
+                  </a>
+                </div>
+                <div class="menu-item">
                   <a class="menu-link {{Request::is('dev/content') ? 'active bg-light' : ''}} py-2" href="/dev/content">
                     <i class="fa fa-newspaper-o"></i>
                     <span class="menu-title">Content</span>

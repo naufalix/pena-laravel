@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ApiFormatter;
 use App\Models\Admin;
+use App\Models\Card;
 use App\Models\Content;
 use App\Models\Faq;
 use App\Models\Master;
@@ -23,6 +24,14 @@ class APIController extends Controller
   public function Admin(Admin $admin){   
     if($this->previlege(6)){
       return ApiFormatter::createApi(200,"Success",$admin);
+    }else{
+      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+    }
+  }
+
+  public function Card(Card $card){   
+    if($this->previlege(6)){
+      return ApiFormatter::createApi(200,"Success",$card);
     }else{
       return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
     }
