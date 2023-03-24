@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DevCard;
 use App\Http\Controllers\Admin\DevContent;
 use App\Http\Controllers\Admin\DevFaq;
 use App\Http\Controllers\Admin\DevMaster;
+use App\Http\Controllers\Admin\DevSponsor;
 use App\Http\Controllers\Auth\AdminAuthController;
 
 /*
@@ -40,12 +41,14 @@ Route::group(['prefix'=> 'dev','middleware'=>['auth:admin']], function(){
     Route::get('/content', [DevContent::class, 'index']);
     Route::get('/faq', [DevFaq::class, 'index']);
     Route::get('/master', [DevMaster::class, 'index']);
+    Route::get('/sponsor', [DevSponsor::class, 'index']);
     
     Route::post('/admin', [DevAdmin::class, 'postHandler']);
     Route::post('/card', [DevCard::class, 'postHandler']);
     Route::post('/content', [DevContent::class, 'postHandler']);
     Route::post('/faq', [DevFaq::class, 'postHandler']);
     Route::post('/master', [DevMaster::class, 'postHandler']);
+    Route::post('/sponsor', [DevSponsor::class, 'postHandler']);
 });
 
 // API
@@ -55,5 +58,6 @@ Route::group(['prefix'=> 'api'], function(){
     Route::get('content/{content:id}', [APIController::class, 'Content']);
     Route::get('faq/{faq:id}', [APIController::class, 'Faq']);
     Route::get('master/{master:id}', [APIController::class, 'Master']);
+    Route::get('sponsor/{sponsor:id}', [APIController::class, 'Sponsor']);
     Route::post('masterpost', [APIController::class, 'MasterPost']);
 });

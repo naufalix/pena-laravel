@@ -8,6 +8,7 @@ use App\Models\Card;
 use App\Models\Content;
 use App\Models\Faq;
 use App\Models\Master;
+use App\Models\Sponsor;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +61,7 @@ class APIController extends Controller
       return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
     }
   }
-
+  
   public function MasterPost(Request $request){  
     try{
       $validatedData = $request->validate([
@@ -69,7 +70,7 @@ class APIController extends Controller
       ]);
       
       $master = Master::find($request->id);
-
+      
       //Check if master data is found
       if($master){
         //Check if user is authorized
@@ -85,6 +86,14 @@ class APIController extends Controller
     }catch(Exception $error){
       return ApiFormatter::createApi(400,"Failed!");
     }  
+  }
+
+  public function Sponsor(Sponsor $sponsor){   
+    if($this->previlege(6)){
+      return ApiFormatter::createApi(200,"Success",$sponsor);
+    }else{
+      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+    }
   }
   
 }

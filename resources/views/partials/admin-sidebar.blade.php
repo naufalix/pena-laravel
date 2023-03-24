@@ -59,6 +59,12 @@
                     </div>
                   </div>
                 </div>
+                <div class="menu-item">
+                  <a class="menu-link {{Request::is('dev/sponsor') ? 'active bg-light' : ''}} py-2" href="/dev/sponsor">
+                    <i class="bi bi-currency-exchange"></i>
+                    <span class="menu-title">Sponsor</span>
+                  </a>
+                </div>
 
                 @if(in_array("6", $previlege))
                 <div class="menu-item">
