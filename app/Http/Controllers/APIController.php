@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auth\Privilege;
 use App\Helpers\ApiFormatter;
 use App\Models\Admin;
 use App\Models\Card;
@@ -17,58 +18,52 @@ use Illuminate\Support\Facades\Auth;
 
 class APIController extends Controller
 {
-  public function previlege($p){
-    $auth = Auth::guard('admin')->user();
-    $previlege = explode(",",$auth->previlege);
-    if(!in_array($p, $previlege)){ return false; }
-    return true;
-  }
 
-  public function Admin(Admin $admin){   
-    if($this->previlege(6)){
+  public function Admin(Admin $admin){  
+    if(Privilege::get(6)){
       return ApiFormatter::createApi(200,"Success",$admin);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
 
   public function Card(Card $card){   
-    if($this->previlege(6)){
+    if(Privilege::get('EC1')){
       return ApiFormatter::createApi(200,"Success",$card);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
 
   public function Content(Content $content){   
-    if($this->previlege(6)){
+    if(Privilege::get('C1')){
       return ApiFormatter::createApi(200,"Success",$content);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
 
   public function Faq(Faq $faq){   
-    if($this->previlege(6)){
+    if(Privilege::get('F1')){
       return ApiFormatter::createApi(200,"Success",$faq);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
 
   public function Gallery(Gallery $gallery){   
-    if($this->previlege(6)){
+    if(Privilege::get('G1')){
       return ApiFormatter::createApi(200,"Success",$gallery);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
 
   public function Master(Master $master){   
-    if($this->previlege(6)){
+    if(Privilege::get('M1')){
       return ApiFormatter::createApi(200,"Success",$master);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
   
@@ -84,14 +79,14 @@ class APIController extends Controller
       //Check if master data is found
       if($master){
         //Check if user is authorized
-        if($this->previlege(6)){
+        if(Privilege::get('M1')){
           $master->update($validatedData);
           return ApiFormatter::createApi(200,"Success",$master);
         }else{
-          return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+          return ApiFormatter::createApi(401,"You dont have access");
         }
       }else{
-        return ApiFormatter::createApi(404,"Data tidak ditemukan");
+        return ApiFormatter::createApi(404,"Data not found");
       }
     }catch(Exception $error){
       return ApiFormatter::createApi(400,"Failed!");
@@ -99,18 +94,18 @@ class APIController extends Controller
   }
 
   public function Sponsor(Sponsor $sponsor){   
-    if($this->previlege(6)){
+    if(Privilege::get('S1')){
       return ApiFormatter::createApi(200,"Success",$sponsor);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
 
   public function EicCategory(EicCategory $eicc){   
-    if($this->previlege(6)){
+    if(Privilege::get('EC2')){
       return ApiFormatter::createApi(200,"Success",$eicc);
     }else{
-      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+      return ApiFormatter::createApi(401,"You dont have access");
     }
   }
   

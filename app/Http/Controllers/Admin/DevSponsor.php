@@ -4,24 +4,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\Sponsor;
+use App\Auth\Privilege;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
 
 class DevSponsor extends Controller
 {
-
-    public function previlege($p){
-        $auth = Auth::guard('admin')->user();
-        $previlege = explode(",",$auth->previlege);
-        if(!in_array($p, $previlege)){ return false; }
-        return true;
-    }
     
     public function index(){
-        if(!$this->previlege(6)){
-            return redirect('/dev/home')->with("info","Anda tidak punya akses");
+        if(!Privilege::get('S1')){
+            return redirect('/dev/home')->with("info","You dont have access");
         }
         $meta = Meta::$data_meta;
         $meta['title'] = 'Admin | Sponsor Setting';
@@ -32,7 +24,9 @@ class DevSponsor extends Controller
     }
 
     public function postHandler(Request $request){
-        $this->previlege(6);
+        if(!Privilege::get('S1')){
+            return redirect('/dev/home')->with("info","You don't have access");
+        }
         if($request->submit=="store"){
             $res = $this->store($request);
             return redirect('/dev/sponsor')->with($res['status'],$res['message']);

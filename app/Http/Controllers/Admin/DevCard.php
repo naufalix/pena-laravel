@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\Card;
+use App\Auth\Privilege;
 use Illuminate\Http\Request;
 
 class DevCard extends Controller
 {
     public function index(){
+        if(!Privilege::get('EC1')){
+            return redirect('/dev/home')->with("info","You don't have access");
+        }
         $meta = Meta::$data_meta;
         $meta['title'] = "Admin | Card";
         return view('admin.card',[
@@ -18,6 +22,9 @@ class DevCard extends Controller
     }
 
     public function postHandler(Request $request){
+        if(!Privilege::get('EC1')){
+            return redirect('/dev/home')->with("info","You don't have access");
+        }
         if($request->submit=="store"){
             $res = $this->store($request);
             return redirect('/dev/card')->with($res['status'],$res['message']);

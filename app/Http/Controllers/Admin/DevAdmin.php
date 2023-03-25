@@ -4,26 +4,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\Admin;
+use App\Auth\Privilege;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class DevAdmin extends Controller
 {
-
-    public function previlege($p){
-        $auth = Auth::guard('admin')->user();
-        $previlege = explode(",",$auth->previlege);
-        if(!in_array($p, $previlege)){ return false; }
-        return true;
-    }
     
     public function index(){
-        if(!$this->previlege(6)){
-            return redirect('/dev/home')->with("info","Anda tidak punya akses");
+        if(!Privilege::get(6)){
+            return redirect('/dev/home')->with("info","You dont have access");
         }
         $meta = Meta::$data_meta;
-        $meta['title'] = 'Admin | Pengaturan Admin';
+        $meta['title'] = 'Admin | Admin Setting';
         return view('admin.admin',[
             "meta" => $meta,
             "admins" => Admin::all(),
@@ -31,7 +24,9 @@ class DevAdmin extends Controller
     }
 
     public function postHandler(Request $request){
-        $this->previlege(6);
+        if(!Privilege::get(6)){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         if($request->submit=="store"){
             $res = $this->store($request);
             return redirect('/dev/admin')->with($res['status'],$res['message']);
@@ -55,19 +50,19 @@ class DevAdmin extends Controller
             'username' => 'required',
             'password' => 'required',
             'status' => 'required',
-            'previlege'=>'required',
+            'privilege'=>'required',
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);
-        $validatedData['previlege'] = implode(",",$validatedData['previlege']);
+        $validatedData['privilege'] = implode(",",$validatedData['privilege']);
         //dd($validatedData);
 
         // Check Username
         if(!Admin::whereUsername($request->username)->first()){
             // Create new user
             Admin::create($validatedData);
-            return ['status'=>'success','message'=>'Admin berhasil ditambahkan'];
+            return ['status'=>'success','message'=>'Admin added successfully'];
         }else{
-            return ['status'=>'error','message'=>'Username telah terpakai'];
+            return ['status'=>'error','message'=>'Username already taken'];
         }
     }
 
@@ -77,9 +72,9 @@ class DevAdmin extends Controller
             'name'=>'required',
             'username' => 'required',
             'status' => 'required',
-            'previlege'=>'required',
+            'privilege'=>'required',
         ]);
-        $validatedData['previlege'] = implode(",",$validatedData['previlege']);
+        $validatedData['privilege'] = implode(",",$validatedData['privilege']);
 
         $admin = Admin::find($request->id);
         $oldUsername = $admin->username;
@@ -97,14 +92,14 @@ class DevAdmin extends Controller
             //Check username
             if($newUsername!=$oldUsername){
                 if(Admin::whereUsername($request->username)->first()){
-                    return ['status'=>'error','message'=>'Username telah terpakai'];
+                    return ['status'=>'error','message'=>'Username already taken'];
                 }
             }
             // Update admin
             $admin->update($validatedData);   
-            return ['status'=>'success','message'=>'Admin berhasil diedit']; 
+            return ['status'=>'success','message'=>'Admin updated successfully']; 
         }else{
-            return ['status'=>'error','message'=>'Admin tidak ditemukan'];
+            return ['status'=>'error','message'=>'Admin not found'];
         }
     }
 
@@ -119,9 +114,9 @@ class DevAdmin extends Controller
         //Check if the admin is found
         if($admin){
             Admin::destroy($request->id);    // Delete admin
-            return ['status'=>'success','message'=>'Admin berhasil dihapus'];
+            return ['status'=>'success','message'=>'Admin deleted successfully'];
         }else{
-            return ['status'=>'error','message'=>'Admin tidak ditemukan'];
+            return ['status'=>'error','message'=>'Admin not found'];
         }
     }
 }

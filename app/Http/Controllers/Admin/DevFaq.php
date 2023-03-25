@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\Faq;
+use App\Auth\Privilege;
 use Illuminate\Http\Request;
 
 class DevFaq extends Controller
 {
     public function index(){
+        if(!Privilege::get('F1')){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         $meta = Meta::$data_meta;
         $meta['title'] = "Admin | Faq";
         return view('admin.faq',[
@@ -18,6 +22,9 @@ class DevFaq extends Controller
     }
 
     public function postHandler(Request $request){
+        if(!Privilege::get('F1')){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         if($request->submit=="store"){
             $res = $this->store($request);
             return redirect('/dev/faq')->with($res['status'],$res['message']);

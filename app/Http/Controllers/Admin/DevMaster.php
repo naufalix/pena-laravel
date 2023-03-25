@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\Master;
+use App\Auth\Privilege;
 use Illuminate\Http\Request;
 
 class DevMaster extends Controller
 {
     public function index(){
+        if(!Privilege::get('M1')){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         $meta = Meta::$data_meta;
         $meta['title'] = "Admin | Master";
         return view('admin.master',[
@@ -18,6 +22,9 @@ class DevMaster extends Controller
     }
 
     public function postHandler(Request $request){
+        if(!Privilege::get('M1')){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         if($request->submit=="store"){
             $res = $this->store($request);
             return redirect('/dev/master')->with($res['status'],$res['message']);

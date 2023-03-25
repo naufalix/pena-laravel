@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Meta;
 use App\Models\EicCategory;
+use App\Auth\Privilege;
 use Illuminate\Http\Request;
 
 class DevEicCategory extends Controller
 {
     public function index(){
+        if(!Privilege::get('EC2')){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         $meta = Meta::$data_meta;
         $meta['title'] = "Admin | EIC Category";
         return view('admin.eic-category',[
@@ -18,6 +22,9 @@ class DevEicCategory extends Controller
     }
 
     public function postHandler(Request $request){
+        if(!Privilege::get('EC2')){
+            return redirect('/dev/home')->with("info","You dont have access");
+        }
         if($request->submit=="store"){
             $res = $this->store($request);
             return redirect('/dev/eic-category')->with($res['status'],$res['message']);
