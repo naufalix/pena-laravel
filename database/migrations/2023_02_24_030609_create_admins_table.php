@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name',50);
             $table->string('username',50)->unique();
             $table->string('password');
-            $table->string('previlege',50);
+            $table->string('privilege',50);
             $table->string('status',50);
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();

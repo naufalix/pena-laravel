@@ -28,16 +28,31 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $admins = json_decode(File::get("database/data/admins.json"));
-        foreach ($admins as $key => $value) {
-            Admin::create([
-                "name" => $value->name,
-                "username" => $value->username,
-                "password" => $value->password,
-                "previlege" => $value->previlege,
-                "status" => $value->status,
-            ]);
-        }
+        // $admins = json_decode(File::get("database/data/admins.json"));
+        // foreach ($admins as $key => $value) {
+        //     Admin::create([
+        //         "name" => $value->name,
+        //         "username" => $value->username,
+        //         "password" => $value->password,
+        //         "previlege" => $value->previlege,
+        //         "status" => $value->status,
+        //     ]);
+        // }
+
+        Admin::create([
+            "name" => "Naufal Ulinnuha",  
+            "username" => "naufal",  
+            "password" => bcrypt('admin'),
+            "privilege" => "C1,EC1,EC2,F1,G1,S1,M1,6",
+            "status" => "active"
+        ]);
+        Admin::create([
+            "name" => "Admin PENA",  
+            "username" => "admin",  
+            "password" => bcrypt('penm2883'),
+            "privilege" => "C1,EC1,EC2,F1,G1,S1",
+            "status" => "active"
+        ]);
 
         $contents = json_decode(File::get("database/data/contents.json"));
         foreach ($contents as $key => $value) {
