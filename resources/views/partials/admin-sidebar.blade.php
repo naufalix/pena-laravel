@@ -25,16 +25,31 @@
                   </a>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link {{Request::is('dev/card') ? 'active bg-light' : ''}} py-2" href="/dev/card">
-                    <i class="bi bi-card-heading"></i>
-                    <span class="menu-title">Card</span>
-                  </a>
-                </div>
-                <div class="menu-item">
                   <a class="menu-link {{Request::is('dev/content') ? 'active bg-light' : ''}} py-2" href="/dev/content">
                     <i class="fa fa-newspaper-o"></i>
                     <span class="menu-title">Content</span>
                   </a>
+                </div>
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                  <span class="menu-link py-2 @if(Request::is('dev/card')||Request::is('dev/eic-category')) active bg-light @endif">
+                    <i class="fa fa-gg"></i>
+                    <span class="menu-title">EIC</span>
+                    <span class="menu-arrow"></span>
+                  </span>
+                  <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                      <a class="menu-link py-2" href="/dev/card">
+                        <i class="bi bi-card-heading"></i>
+                        <span class="menu-title">Card</span>
+                      </a>
+                    </div>
+                    <div class="menu-item">
+                      <a class="menu-link py-2" href="/dev/eic-category">
+                        <i class="bi bi-grid-fill"></i>
+                        <span class="menu-title">Category</span>
+                      </a>
+                    </div>
+                  </div>
                 </div>
                 <div class="menu-item">
                   <a class="menu-link {{Request::is('dev/faq') ? 'active bg-light' : ''}} py-2" href="/dev/faq">
@@ -42,22 +57,11 @@
                     <span class="menu-title">FAQ</span>
                   </a>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                  <span class="menu-link py-2">
-                    <i class="fa fa-gg"></i>
-                    <span class="menu-title">EIC</span>
-                    <span class="menu-arrow"></span>
-                  </span>
-                  <div class="menu-sub menu-sub-accordion">
-                    <div class="menu-item">
-                      <a class="menu-link py-2" href="/dev/category">
-                        <span class="menu-bullet">
-                          <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Kategori</span>
-                      </a>
-                    </div>
-                  </div>
+                <div class="menu-item">
+                  <a class="menu-link {{Request::is('dev/gallery') ? 'active bg-light' : ''}} py-2" href="/dev/card">
+                    <i class="bi bi-image"></i>
+                    <span class="menu-title">Gallery</span>
+                  </a>
                 </div>
                 <div class="menu-item">
                   <a class="menu-link {{Request::is('dev/sponsor') ? 'active bg-light' : ''}} py-2" href="/dev/sponsor">

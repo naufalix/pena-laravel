@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Admin;
 use App\Models\Card;
 use App\Models\Content;
+use App\Models\EicCategory;
 use App\Models\Faq;
 use App\Models\Master;
 use File;
@@ -67,6 +68,16 @@ class DatabaseSeeder extends Seeder
                 "description" => $value->description,
                 "button" => $value->button,
                 "url" => $value->url,
+            ]);
+        }
+
+        $eiccs = json_decode(File::get("database/data/eic-categories.json"));
+        foreach ($eiccs as $key => $value) {
+            EicCategory::create([
+                "title" => $value->title,
+                "description" => $value->description,
+                "icon" => $value->icon,
+                "status" => $value->status,
             ]);
         }
     }

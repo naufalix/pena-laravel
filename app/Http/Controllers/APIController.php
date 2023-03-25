@@ -6,6 +6,7 @@ use App\Helpers\ApiFormatter;
 use App\Models\Admin;
 use App\Models\Card;
 use App\Models\Content;
+use App\Models\EicCategory;
 use App\Models\Faq;
 use App\Models\Master;
 use App\Models\Sponsor;
@@ -91,6 +92,14 @@ class APIController extends Controller
   public function Sponsor(Sponsor $sponsor){   
     if($this->previlege(6)){
       return ApiFormatter::createApi(200,"Success",$sponsor);
+    }else{
+      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+    }
+  }
+
+  public function EicCategory(EicCategory $eicc){   
+    if($this->previlege(6)){
+      return ApiFormatter::createApi(200,"Success",$eicc);
     }else{
       return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
     }
