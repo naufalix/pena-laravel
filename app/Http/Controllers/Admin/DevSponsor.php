@@ -56,7 +56,7 @@ class DevSponsor extends Controller
             'title' => 'required',
             'type' => 'required',
             'sort' => 'required',
-            'logo' => 'image|file|max:1024',
+            'logo' => 'required|image|file|max:1024',
         ]);
 
         $validatedData['class'] = $request->class;
