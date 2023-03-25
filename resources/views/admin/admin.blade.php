@@ -36,7 +36,7 @@
       <tbody>
         @foreach($admins as $admin)
         <?php
-          $previlege = explode(",",$admin->previlege);
+          $privilege = explode(",",$admin->privilege);
         ?>
         <tr>
           <td>{{ $loop->iteration }}</td>
@@ -50,7 +50,7 @@
             @endif
           </td>
           <td style="min-width: 100px;">
-            <span class="badge badge-success">{{ str_replace(",",", ",$admin->previlege) }}</span>
+            <span class="badge badge-success">{{ str_replace(",",", ",$admin->privilege) }}</span>
           </td>
           <td style="min-width: 100px;">
             <a href="#" class="btn btn-icon btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit" onclick="edit({{ $admin->id }})"><i class="bi bi-pencil-fill"></i></a>
@@ -105,15 +105,19 @@
               <br>
               @php
                 $prev = [
-                  [1,'1. CRUD FAQ'],
-                  [2,'2. Edit About'],
-                  [5,'5. Kategori EIC'],
-                  [6,'6. Data Admin']
+                  ['C1','Content'],
+                  ['EC1','EIC Card'],
+                  ['EC2','EIC Category'],
+                  ['F1','FAQ'],
+                  ['G1','Gallery'],
+                  ['S1','Sponsor'],
+                  ['M1','Data Master'],
+                  [6,'Data Admin']
                 ];
               @endphp
               @foreach ($prev as $p)
                 <div class="col-6 mt-0">
-                  <input type="checkbox" name="previlege[]" value="{{$p[0]}}" @if($p[0]=="1") checked @endif>
+                  <input type="checkbox" name="privilege[]" value="{{$p[0]}}" @if($p[0]=="1") checked @endif>
                   <label for="p{{$p[0]}}"> {{$p[1]}}</label>
                 </div>
               @endforeach
@@ -170,15 +174,19 @@
               <br>
               @php
                 $prev = [
-                  [1,'1. CRUD FAQ'],
-                  [2,'2. Edit About'],
-                  [5,'5. Kategori EIC'],
-                  [6,'6. Data Admin']
+                  ['C1','Content'],
+                  ['EC1','EIC Card'],
+                  ['EC2','EIC Category'],
+                  ['F1','FAQ'],
+                  ['G1','Gallery'],
+                  ['S1','Sponsor'],
+                  ['M1','Data Master'],
+                  [6,'Data Admin']
                 ];
               @endphp
               @foreach ($prev as $p)
-                <div class="col-6 mt-0">
-                  <input class="epv" type="checkbox" id="p{{$p[0]}}" name="previlege[]" value="{{$p[0]}}">
+                <div class="col-4 mt-0">
+                  <input class="epv" type="checkbox" id="p{{$p[0]}}" name="privilege[]" value="{{$p[0]}}">
                   <label for="p{{$p[0]}}"> {{$p[1]}}</label>
                 </div>
               @endforeach
@@ -238,7 +246,7 @@
           $(this).prop( "checked",false)
         });
         //Set checked
-        pvs = mydata.previlege.split(",");
+        pvs = mydata.privilege.split(",");
         for (let i = 0; i < pvs.length; i++) {
           $(".epv").each(function(){
             if($(this).val()==pvs[i]){
