@@ -8,6 +8,7 @@ use App\Models\Card;
 use App\Models\Content;
 use App\Models\EicCategory;
 use App\Models\Faq;
+use App\Models\Gallery;
 use App\Models\Master;
 use App\Models\Sponsor;
 use Exception;
@@ -50,6 +51,14 @@ class APIController extends Controller
   public function Faq(Faq $faq){   
     if($this->previlege(6)){
       return ApiFormatter::createApi(200,"Success",$faq);
+    }else{
+      return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
+    }
+  }
+
+  public function Gallery(Gallery $gallery){   
+    if($this->previlege(6)){
+      return ApiFormatter::createApi(200,"Success",$gallery);
     }else{
       return ApiFormatter::createApi(401,"Anda tidak memiliki akses");
     }

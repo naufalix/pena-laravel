@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DevCard;
 use App\Http\Controllers\Admin\DevContent;
 use App\Http\Controllers\Admin\DevEicCategory;
 use App\Http\Controllers\Admin\DevFaq;
+use App\Http\Controllers\Admin\DevGallery;
 use App\Http\Controllers\Admin\DevMaster;
 use App\Http\Controllers\Admin\DevSponsor;
 use App\Http\Controllers\Auth\AdminAuthController;
@@ -41,6 +42,7 @@ Route::group(['prefix'=> 'dev','middleware'=>['auth:admin']], function(){
     Route::get('/card', [DevCard::class, 'index']);
     Route::get('/content', [DevContent::class, 'index']);
     Route::get('/faq', [DevFaq::class, 'index']);
+    Route::get('/gallery', [DevGallery::class, 'index']);
     Route::get('/eic-category', [DevEicCategory::class, 'index']);
     Route::get('/master', [DevMaster::class, 'index']);
     Route::get('/sponsor', [DevSponsor::class, 'index']);
@@ -49,6 +51,7 @@ Route::group(['prefix'=> 'dev','middleware'=>['auth:admin']], function(){
     Route::post('/card', [DevCard::class, 'postHandler']);
     Route::post('/content', [DevContent::class, 'postHandler']);
     Route::post('/faq', [DevFaq::class, 'postHandler']);
+    Route::post('/gallery', [DevGallery::class, 'postHandler']);
     Route::post('/eic-category', [DevEicCategory::class, 'postHandler']);
     Route::post('/master', [DevMaster::class, 'postHandler']);
     Route::post('/sponsor', [DevSponsor::class, 'postHandler']);
@@ -60,6 +63,7 @@ Route::group(['prefix'=> 'api'], function(){
     Route::get('card/{card:id}', [APIController::class, 'Card']);
     Route::get('content/{content:id}', [APIController::class, 'Content']);
     Route::get('faq/{faq:id}', [APIController::class, 'Faq']);
+    Route::get('gallery/{gallery:id}', [APIController::class, 'Gallery']);
     Route::get('eic-category/{eicc:id}', [APIController::class, 'EicCategory']);
     Route::get('master/{master:id}', [APIController::class, 'Master']);
     Route::get('sponsor/{sponsor:id}', [APIController::class, 'Sponsor']);

@@ -58,7 +58,7 @@
                   </a>
                 </div>
                 <div class="menu-item">
-                  <a class="menu-link {{Request::is('dev/gallery') ? 'active bg-light' : ''}} py-2" href="/dev/card">
+                  <a class="menu-link {{Request::is('dev/gallery') ? 'active bg-light' : ''}} py-2" href="/dev/gallery">
                     <i class="bi bi-image"></i>
                     <span class="menu-title">Gallery</span>
                   </a>
