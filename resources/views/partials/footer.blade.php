@@ -1,72 +1,52 @@
-<footer id="footer">
-  <div class="footer-top">
-    <div class="container">
-      <div class="row">
 
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-info">
-            <h3>Sailor</h3>
-            <p>
-              A108 Adam Street <br>
-              NY 535022, USA<br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <img src="assets/img/logo/logo-white.png" alt="TheEvenet">
+            <p>Pekan Elektromedik Nasional merupakan agenda tahunan Himpunan Mahasiswa Teknik Elektromedik Indonesia (HIMATEMI)</p>
           </div>
-        </div>
 
-        <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="home">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="eic">Electromedical Innovation Competition</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="semnas">Seminar Nasional</a></li>
+            </ul>
+          </div>
 
-        <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              Poltekkes Kemenkes Jakarta ll, Jl. Hang Jebat lll/Blok af3 Kebayoran Baru, Jakarta Selatan 12120 <br>
+              <strong>Whatsapp : </strong><a class="text-white" href="https://wa.me/6285974441850">085974441850 (Atika Ikhwani)</a><br>
+            </p>
 
-        <div class="col-lg-4 col-md-6 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          <form action="" method="post">
-            <input type="email" name="email"><input type="submit" value="Subscribe">
-          </form>
+            <div class="social-links">
+              <a target="_blank" href="https://www.instagram.com/pekanelektromediknasional/"><i class="bi bi-instagram"></i></a>
+              <a target="_blank" href="https://youtube.com/@penaindonesia6660"><i class="bi bi-youtube"></i></a>
+              <a target="_blank" href="https://wa.me/6285974441850"><i class="bi bi-whatsapp"></i></a>
+              <a target="_blank" href="https://mail.google.com/mail/u/0/?view=cm&tf=1&fs=1&to=pekanelektromediknasional@gmail.com"><i class="bi bi-envelope"></i></a>
+            </div>
+
+          </div>
 
         </div>
-
       </div>
     </div>
-  </div>
-
-  <div class="container">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Sailor</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </div>
-</footer>
+    <center style="background-color: #0067A0">
+      <p class="m-0" style="color: #FFFFFF20">Template by <a href="https://bootstrapmade.com/" style="color: #FFFFFF20">BootstrapMade</a></p>  
+    </center>
+    
+    <!-- <div class="container">
+      <div class="copyright">
+        © Copyright <strong>TheEvent</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div> -->
+  </footer>

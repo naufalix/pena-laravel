@@ -9,8 +9,10 @@
     <meta property="og:title" content="{{ $meta['title'] }}" />
     <meta property="og:url" content="{{ $meta['url'] }}" />
     <meta property="og:site_name" content="{{ $meta['site_name'] }}" />
-    <link rel="canonical" href="Https://preview.keenthemes.com/ceres-html-free" />
-    <link rel="shortcut icon" href="/favicon.png" />
+    
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />

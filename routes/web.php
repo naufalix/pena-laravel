@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIController;
-// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DevHome;
 use App\Http\Controllers\Admin\DevAdmin;
 use App\Http\Controllers\Admin\DevCard;
@@ -25,9 +25,8 @@ use App\Http\Controllers\Auth\AdminAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 // ADMIN AUTH
 Route::get('/dev/login', [AdminAuthController::class, 'index'])->name('login');

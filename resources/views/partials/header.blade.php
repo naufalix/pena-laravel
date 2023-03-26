@@ -1,28 +1,26 @@
-<header id="header" class="fixed-top d-flex align-items-center">
-  <div class="container d-flex align-items-center">
+<div class="container d-flex align-items-center justify-content-between">
 
-    <h1 class="logo me-auto"><a href="/home">PLPI</a></h1>
+  <div class="logo">
+    <!-- <h1><a href="index.html">Vesperr</a></h1> -->
     <!-- Uncomment below if you prefer to use an image logo -->
-    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a href="/home" class="{{Request::is('home*') ? 'active' : ''}}">Home</a></li>
-        <li class="dropdown d-none"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>\
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="/shop" class="{{Request::is('shop') ? 'active' : ''}}">Katalog Produk</a></li>
-        <li><a href="#" class="getstarted">Get Started</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-
+     <a href="home"><img src="assets/img/comp.png" alt="" class="img-fluid"></a>
   </div>
-</header>
+
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a class="nav-link scrollto active" href="home">Home</a></li>
+      <li><a class="nav-link scrollto" href="home#about">About</a></li>
+      <li><a class="nav-link scrollto" href="home#teaser">Teaser</a></li>
+      <li><a class="nav-link scrollto" href="home#faq">FAQ</a></li>
+      <li class="dropdown"><a href="#"><span>Event</span> <i class="bi bi-chevron-down"></i></a>
+        <ul>
+          <li><a href="eic">EIC</a></li>
+          <li><a href="semnas">SEMNAS</a></li>
+        </ul>
+      </li>
+      <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav><!-- .navbar -->
+
+</div>
