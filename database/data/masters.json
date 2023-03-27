@@ -13,5 +13,6 @@
   {"code": "semnas-about",  "status": 1},
   {"code": "semnas-banner", "status": 1},
   {"code": "semnas-coming", "status": 1},
-  {"code": "semnas-gallery","status": 1}
+  {"code": "semnas-gallery","status": 1},
+  {"code": "semnas-register","status": 1}
 ]

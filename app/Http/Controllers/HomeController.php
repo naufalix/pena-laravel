@@ -39,4 +39,13 @@ class HomeController extends Controller
             "sponsors" => Sponsor::orderBy("sort")->get(),
         ]);
     }
+
+    public function semnas(){
+        return view('semnas',[
+            "meta" => $this->meta(),
+            "contents" => Content::all(),
+            "galleries" => Gallery::whereType(1)->orderBy("sort")->get(),
+            "sponsors" => Sponsor::orderBy("sort")->get(),
+        ]);
+    }
 }
