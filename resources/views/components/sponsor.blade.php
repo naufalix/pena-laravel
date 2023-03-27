@@ -1,5 +1,8 @@
-	<!-- ======= Sponsor Section ======= -->
-  <section id="sponsor" class="sponsor d-none">
+  @php use App\Models\Master; @endphp
+
+  @if (Master::whereCode('sponsor')->first()->status)
+  <!-- ======= Sponsor Section ======= -->
+  <section id="sponsor" class="sponsor">
     <div class="container">
 
       <div class="section-title" data-aos="fade-up">
@@ -7,17 +10,21 @@
       </div>
 
       <div class="row mx-auto justify-content-center col-12 col-lg-10" data-aos="fade-up" data-aos-delay="300">
-        <div class="col-3 p-3">
-          <img class="col-12" src="assets/img/sponsor/1.png">
-        </div>
-        <div class="col-3 p-3">
-          <img class="col-12" src="assets/img/sponsor/2.png">
-        </div>
+        
+        @foreach ($sponsors as $s)
+          @if ($s->type==1)
+            <div class="{{ $s->class }}">
+              <img class="col-12" src="/assets/img/sponsor/{{ $s->logo }}">
+            </div>
+          @endif
+        @endforeach
       </div>
 
     </div>
   </section><!-- End Sponsor Section -->
+  @endif
 
+  @if (Master::whereCode('support')->first()->status)
   <section id="support" class="sponsor">
     <div class="container">
 
@@ -26,16 +33,20 @@
       </div>
 
       <div class="row mx-auto justify-content-center col-12 col-lg-10" data-aos="fade-up" data-aos-delay="300">
-        <?php for($i=21; $i<=25; $i++) { ?>
-        <div class="col-4 col-md-2 p-3">
-          <img class="col-12" src="assets/img/sponsor/<?= $i; ?>.png">
-        </div>
-        <?php } ?>
+        @foreach ($sponsors as $s)
+          @if ($s->type==3)
+            <div class="{{ $s->class }}">
+              <img class="col-12" src="/assets/img/sponsor/{{ $s->logo }}">
+            </div>
+          @endif
+        @endforeach
       </div>
 
     </div>
   </section><!-- End Sponsor Section -->
+  @endif
 
+  @if (Master::whereCode('medpart')->first()->status)
   <!-- ======= Sponsor Section ======= -->
   <section id="medpart" class="medpart">
     <div class="container">
@@ -45,15 +56,15 @@
       </div>
 
       <div class="row mx-auto justify-content-center col-12 col-lg-10" data-aos="fade-up" data-aos-delay="300">
-        <?php
-          $medpart = [16,17,18,5,19,20,26,27,28];
-          foreach($medpart as $i) { 
-        ?>
-        <div class="col-3 col-md-1 p-3">
-          <img class="col-12" src="assets/img/sponsor/<?= $i; ?>.png">
-        </div>
-        <?php } ?>
+        @foreach ($sponsors as $s)
+          @if ($s->type==2)
+            <div class="{{ $s->class }}">
+              <img class="col-12" src="/assets/img/sponsor/{{ $s->logo }}">
+            </div>
+          @endif
+        @endforeach
       </div>
 
     </div>
   </section><!-- End Sponsor Section -->
+  @endif

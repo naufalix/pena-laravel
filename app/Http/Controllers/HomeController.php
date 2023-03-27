@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use App\Models\Master;
+use App\Models\Content;
+use App\Models\Faq;
 use App\Models\Meta;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
@@ -19,6 +20,9 @@ class HomeController extends Controller
     public function index(){
         return view('home',[
             "meta" => $this->meta(),
+            "contents" => Content::all(),
+            "faqs" => Faq::whereShow(1)->orderBy("sort")->get(),
+            "sponsors" => Sponsor::orderBy("sort")->get(),
         ]);
     }
 }
