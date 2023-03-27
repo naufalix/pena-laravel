@@ -34,6 +34,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/sweetalert2.all.min.js"></script>
+  <script src="assets/js/jquery.min.js"></script>
 
   <style type="text/css">
     .pointer:hover {cursor: pointer}

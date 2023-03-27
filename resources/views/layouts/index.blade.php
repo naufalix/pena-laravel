@@ -26,6 +26,7 @@
 
   <!-- JS Files -->
   @include('partials.script')
+  @yield('script')
 
 </body>
 

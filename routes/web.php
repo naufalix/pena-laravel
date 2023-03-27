@@ -27,6 +27,8 @@ use App\Http\Controllers\Auth\AdminAuthController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/eic', [HomeController::class, 'eic']);
+Route::get('/semnas', [HomeController::class, 'semnas']);
 
 // ADMIN AUTH
 Route::get('/dev/login', [AdminAuthController::class, 'index'])->name('login');
