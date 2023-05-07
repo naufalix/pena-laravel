@@ -14,7 +14,7 @@
 
         <div class="row content">
           <div class="mx-auto col-12 col-lg-8" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/banner-semnas2.png" style="width: 100%; border: 1px solid #2F2051">  
+            <img src="assets/img/flyer-semnas.png" style="width: 100%; border: 1px solid #2F2051">  
           </div>
           <br>
           @if (Master::whereCode('semnas-about')->first()->status)
